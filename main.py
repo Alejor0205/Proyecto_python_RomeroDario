@@ -54,7 +54,9 @@ def numerosCaidos(tickets, winners ):
     resultados=[]
     coincidenciasPos = 0
     for ticket in tickets:
-        coincidenciasPos = sum(1 for i in range(len(ticket)) if ticket[i] == winners[i])
+        for i in range(len(ticket)):
+            if ticket[i] == winners[i]:
+                coincidenciasPos += 1
         cuantosCaidos = len(set(ticket) & set(winners))
         resultados.append((ticket, cuantosCaidos,coincidenciasPos, premiacion(cuantosCaidos)))
     return resultados
