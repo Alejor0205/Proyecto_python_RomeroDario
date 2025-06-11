@@ -22,14 +22,14 @@ def generoTicket():
     while len(ticket) < digitosTicket:
         try:
             numero= int(input(f'Numero {len(ticket)+1}:')) # funcion para pedir numeros ordenados empezando de Numero 1 en posicion 0
-            if numero > 0 and numero < rango:
-                ticket.add(numero)
-            elif numero in ticket:
-                print('Numero repetido')
+            if numero in ticket:
+                print("El numerito ya esta en el ticket, ponga otro")
+            elif numero>0 and numero<rango:
+                 ticket.add(numero)
             else:
-                print('Numero invalido')
+                print('El numero supera el rango o es 0 y eso no se puede')
         except ValueError:
-            print('Ingresa solo numeros')
+            print('Eyyy es una loteria solo son numeros')
     return sorted(ticket)    # retorna de una forma ordenada
 
 def generoTicketAuto():
@@ -145,7 +145,7 @@ def menu():
                 print(tabulate([[j[0],j[1],j[2],j[3]] for j in resultados], headers=['Ticket','numeros iguales','Aciertos','Premio'], tablefmt= 'fancy_grid' ))
             
             except Exception as a:
-                print(f'Error en el boleto {a}')
+                print(f'Un error que sucede pero ya se le soluciona {a}')
                 enterParaContinuar()
         elif opcion =='2':
             limpiarConsola()  
@@ -161,7 +161,7 @@ def menu():
             except ValueError:
                 print('Errorcito los datos no son validos, digite bien cuantos boletos')
             except Exception as a:
-                print(f'Errorcito en los boletos automaticos{a}')
+                print(f'Un error que sucede pero ya se le soluciona{a}')
             enterParaContinuar()     
                 
 
@@ -172,7 +172,7 @@ def menu():
         elif opcion == '4':
             limpiarConsola()  
             try:
-                simulaciones = int(input('Cuantas simulaciones quieres hacer\n')) 
+                simulaciones = int(input('Cuantas simulaciones quieres que se haga\n')) 
                 simularJuegos(simulaciones)
             except ValueError:
                 print('Errorcito digite bien las simulaciones')
@@ -218,7 +218,7 @@ def menu():
             except Exception as a:
                 print('Errorcito al jugar {a}')
             enterParaContinuar()
-            
+
         elif opcion == '6':    
             limpiarConsola()  
             salir()
